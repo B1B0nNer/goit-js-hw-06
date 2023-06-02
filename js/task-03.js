@@ -14,6 +14,15 @@ const images = [
 ];
 
 const gallery = document.querySelector(".gallery");
-for (let i = 0; i < images.length; i++){
-  gallery.insertAdjacentHTML("afterend", `<img src=${images[i]["url"]} alt=${images[i]["alt"]}>`);
-}
+const photos = images.map((image) => {
+  const photo = document.createElement("img");
+  photo.src = image.url;
+  photo.alt = image.alt;
+
+  const li = document.createElement("li");
+  li.append(photo);
+
+  return li;
+});
+
+photos.map((photo1) => gallery.insertAdjacentElement("afterend", photo1));

@@ -1,12 +1,14 @@
-const categoriesList = document.querySelector('#categories'); // Вибір елементу ul#categories
-const categoriesItems = categoriesList.querySelectorAll('.item'); // Вибір всіх елементів li.item
+const ul = document.getElementById("categories");
+const items = ul.childNodes;
 
-console.log('Number of categories:', categoriesItems.length); // Виведення кількості категорій
+console.log("Number of categories:", items.length);
 
-categoriesItems.forEach((item) => {
-  const categoryTitle = item.querySelector('h2').textContent; // Отримання тексту заголовку (тегу <h2>)
-  const elements = item.querySelectorAll('li').length; // Отримання кількості елементів в категорії (усіх <li>)
+items.forEach((item) => {
+  if (item.nodeType === 1) {
+    const category = item.firstChild.textContent;
+    const elements = item.lastChild.getElementsByTagName("li").length;
 
-  console.log(`Category: ${categoryTitle}`);
-  console.log(`Elements: ${elements}`);
+    console.log("Category:", category);
+    console.log("Elements:", elements);
+  }
 });
