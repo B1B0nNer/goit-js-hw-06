@@ -15,4 +15,4 @@ const liElements = ingredients.map((ingredient) => {
   return li;
 });
 
-ul.innerHTML = liElements.map((li) => li.outerHTML).join("");
+ul.append(...liElements);

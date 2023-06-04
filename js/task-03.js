@@ -14,15 +14,11 @@ const images = [
 ];
 
 const gallery = document.querySelector(".gallery");
-const photos = images.map((image) => {
-  const photo = document.createElement("img");
-  photo.src = image.url;
-  photo.alt = image.alt;
+gallery.style.flexDirection = "column";
+const photos = images.map((image) => `
+  <li style="width: 100%">
+    <img src="${image.url}" alt="${image.alt}">
+  </li>
+`).join("");
 
-  const li = document.createElement("li");
-  li.append(photo);
-
-  return li;
-});
-
-photos.map((photo1) => gallery.insertAdjacentElement("afterend", photo1));
+gallery.insertAdjacentHTML("beforeend", photos);
